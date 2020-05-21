@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        input[type="text"], input[type="date"], input[type="mail"], select{
+            width: 210px;
+            margin: 10px 5px;
+        }
+        input[type="radio"]{
+            margin: 10px 5px;
+        }
+        select, option{
+            text-align: center;
+            text-align-last: center;
+            
+        }
+        
+        body{
+            /* background-color: beige; */
+            background-image: url("562063.jpg");
+            background-size: 100% 100%;
+        }
+
+        h3{
+            background: rgb(132, 163, 187);
+            color: #FFF;
+            width: 66%;
+            border-radius: 5px;
+        }
+        
+        .head{
+            display: flex;
+            z-index: 2;
+            margin: 0 auto;
+            position:sticky;
+            top: 0;
+            height: 100px;
+            width: 71%;
+            /* background-color: #ffffff; */
+            border: 5px double rgb(206, 70, 47);
+            border-radius: 5px;
+            background: url("UEM_Logo.jpg"), linear-gradient(to bottom right, rgb(0, 110, 255), rgb(146, 235, 241));
+            background-size: 100px 100px, auto;
+            background-repeat: no-repeat;
+            
+        }
+
+        .container{
+            position: relative;
+            top: 10;
+            z-index: 1;
+            margin: auto;
+            width: 70%;
+            border: 2px solid burlywood;
+            border-radius: 5px;
+            opacity: 0.95;
+            padding-bottom: 100px;
+            background-color: azure;
+
+        }
+
+          
+        input:invalid+span:after {
+            content: '✖';
+            padding-left: 5px;
+        }
+
+        input:valid+span:after {
+            content: '✓';
+            padding-left: 5px;
+        }
+    
+    </style>
+
+</head>
+<body>
+    
+    <div class="head">
+        <h1 style="margin: auto; color: rgb(255, 255, 255);"><u>Student Registration Form</u></h1>
+    </div>
+
+    <div  class="container" align="center" top=20>
+
+        <form  action="http://www.google.co.in">
+
+            <div class="Student">
+
+                <h3 style="text-align:center;"> Student Details</h3>
+                <table>
+                    <tr>
+                        <td>
+                            First Name:
+                        </td>
+        
+                        <td>
+                            <input type="text" placeholder=First_Name name="firstname" required> <span class="validity"></span>
+                        </td>
+    
+                        <td style="padding-left: 20px;">
+                            Last Name:
+                        </td>
+        
+                        <td>
+                            <input type="text" placeholder=Last_Name name="lastname" required> <span class="validity"></span>
+                        </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Date of Birth:
+                        </td>
+        
+                        <td>
+                            <input type="date" id=dob name="dob" onchange="getAge()" required> <span class="validity"></span>
+                        </td>
+
+                    </tr>
+
+                    <script>
+                        function getAge() {
+                            
+                            var x = document.getElementById("dob").value;
+                            
+                            var Bday = new Date(x)
+                            var today = new Date()
+                            var year =  today.getFullYear() - Bday.getFullYear()
+                            var month = today.getMonth() - Bday.getMonth()
+                            year = month < 0 ? year - 1 : year
+                            month = month < 0 ? 12 + month : month
+                            document.getElementById("age").value = (`${year} year(s) and ${month} month(s)`);
+                        }
+                    </script>
+
+                    <tr>
+                        <td>
+                            Age:
+                        </td>
+        
+                        <td>
+                            <input type="text" id="age" placeholder=Age name="age" readonly>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>
+                            Email Address:
+                        </td>
+        
+                        <td>
+                            <input type="mail"  placeholder=Email name="email">
+                        </td>
+
+                        <td style="padding-left: 20px;">
+                            Mobile:
+                        </td>
+        
+                        <td>
+                            <input type="text" placeholder=Contact_Number name="mobile" minlength="10" required> <span class="validity"></span>
+                        </td>
+                    </tr>
+        
+                    <tr>
+                        <td>
+                            Gender:
+                        </td>
+            
+                        <td>
+                            <div class="control">
+                                <label class="radio">
+                                    <input type="radio" name="Gender" value="Male"> Male 
+                                </label>
+        
+                                <label class="radio">
+                                    <input type="radio" name="Gender" value="Female"> Female <br>
+                                </label>
+                            </div>
+                            
+                        </td>
+                        
+                    </tr>
+                    
+        
+                </table>
+            </div>
+            <hr>
+
+            <div>
+                <h3 style="text-align:center;"> Course Details</h3>
+
+                <table>
+                    <tr>
+                        <td>
+                            Degree Type:
+                        </td>
+            
+                        <td>
+                            <div class="control">
+                                <label class="radio">
+                                    <input type="radio" name="cType" value="Bachelors" onchange="cbToggle()"> Bachelors 
+                                </label>
+                            </div>    
+                        </td>
+        
+                        <td>
+                            <div class="control">
+                                <label class="radio">
+                                    <input type="radio" name="cType" value="Masters" onchange="cmToggle()"> Masters <br>
+                                </label>
+                            </div>
+                            
+                        </td>
+                        
+                    </tr>
+    
+                    <tr>
+                        <td>
+                            <label for="Course">Course Name:</label>
+                        </td>
+                        
+                        <td>
+                            <div>
+                                <select id="BCourse" name="bcourse" onchange="bToggle()" disabled>
+                                    <option value="default">-----select-----</option>
+                                    <option value="btech">B.Tech.</option>
+                                    <option value="bca">BCA</option>
+                                    <option value="bba">BBA</option>
+                                    <option value="bpt">BPT</option>
+                                </select>
+                            </div>
+                        </td>
+                       
+                        <td>
+                            <div>
+                                <select id="MCourse" name="mcourse" onchange="mToggle()" disabled>
+                                    <option value="default">-----select-----</option>
+                                    <option value="mtech">M.Tech.</option>
+                                    <option value="mca">MCA</option>
+                                    <option value="mba">MBA</option>
+                                    <option value="mpt">MPT</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label for="Stream" >Stream:</label>
+                        </td>
+
+                        <td>
+                            <div>
+                                <select id="Stream" name="stream" disabled>
+                                    <option value="default">-----select-----</option>
+                                    <option value="cse">Computer Science</option>
+                                    <option value="ece">Electronics and Communication</option>
+                                    <option value="ee">Electrical</option>
+                                    <option value="eee">Electrical and Electronics</option>
+                                    <option value="ce">Civil</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>    
+        
+                    <script>
+                        function cbToggle() {
+                            
+                                document.getElementById("BCourse").disabled=false;
+                                document.getElementById("MCourse").disabled=true;
+                                                        
+                        }
+
+                        function cmToggle() {
+                            
+                                document.getElementById("BCourse").disabled=true;
+                                document.getElementById("MCourse").disabled=false;
+                            
+                        }
+
+                        function bToggle() {
+
+                            var choice = document.getElementById("BCourse").value;
+                            if (choice == "btech" || choice == "mtech"){
+                                document.getElementById("Stream").disabled=false;
+                            }
+                            else{
+                                document.getElementById("Stream").disabled=true;
+                            }
+                            
+                        }
+
+                        function mToggle() {
+
+                            var choice = document.getElementById("MCourse").value;
+                            if (choice == "mtech"){
+                                document.getElementById("Stream").disabled=false;
+                            }
+                            else{
+                                document.getElementById("Stream").disabled=true;
+                            }
+                            
+                        }
+                    </script>
+                    
+    
+                    
+
+                </table>
+                
+            </div>
+            <hr>
+
+            <div>
+                <h3 style="text-align:center;"> Parent Details</h3>
+                <table>
+                    <tr>
+                        <td>
+                            First Name:
+                        </td>
+        
+                        <td>
+                            <input type="text" placeholder=First_Name name="pfirstname" required> <span class="validity"></span>
+                        </td>
+    
+                        <td style="padding-left: 20px;">
+                            Last Name:
+                        </td>
+        
+                        <td>
+                            <input type="text" placeholder=Last_Name name="plastname" required> <span class="validity"></span>
+                        </td>
+                        
+                    </tr>
+    
+                    <tr>
+                        <td>
+                            Relation:
+                        </td>
+            
+                        <td>
+                            <div class="control">
+                                <label class="radio">
+                                    <input type="radio" name="Relation" value="Father"> Father 
+                                </label>
+        
+                                <label class="radio">
+                                    <input type="radio" name="Relation" value="Mother"> Mother <br>
+                                </label>
+                            </div>
+                            
+                        </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Email Address:
+                        </td>
+        
+                        <td>
+                            <input type="mail"  placeholder=Email name="pemail">
+                        </td>
+
+                        <td style="padding-left: 20px;">
+                            Mobile:
+                        </td>
+        
+                        <td>
+                            <input type="text" placeholder=Contact_Number name="pmobile" minlength="10" required> <span class="validity"></span>
+                        </td>
+                    </tr>
+        
+                    
+                </table>
+            </div>
+            <hr>
+
+            
+            <input type="submit" value="SUBMIT" onclick="alert('Registration Complete!')">
+        </form> 
+
+        
+
+    </div>
+    
+</body>
+
+</html>
+

@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+
+            <header id="header">
+                <img src="App_Items/UEM_Logo.jpg" />
+                <div style="margin: auto; text-decoration: underline;"><strong>UNIVERSITY OF ENGINEERING & MANAGEMENT, JAIPUR</strong></div>
+            </header>
+
+            <div id="menu">
+                <a class="menu-item" href="Default.aspx">
+                    <div class="label">Home</div>
+                </a>
+                <a class="menu-item" href="Default.aspx"><%--About.aspx">--%>
+                    <div class="label">About</div>
+                </a>
+                <a class="menu-item" href="Default.aspx"><%--Services.aspx">--%>
+                    <div class="label">Services</div>
+                </a>
+                <a class="menu-item" href="Gallery.aspx">
+                    <div class="label">Gallery</div>
+                </a>
+                <a class="menu-item" href="Default.aspx"><%--Contact.aspx">--%>
+                    <div class="label">Contact</div>
+                </a>
+            </div>
+
+            <div id="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <footer>
+                <div style="margin: auto;">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>, Designed by <a style="color: white; text-decoration: none;" href="http://www.linkedin.com/in/gaurav-ganguly-014b5688">Gaurav Ganguly</a>
+                </div>
+            </footer>
+
+
+        </div>
+    </form>
+</body>
+</html>
